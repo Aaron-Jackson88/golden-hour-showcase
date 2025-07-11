@@ -8,35 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Photography portfolio color scheme - warm, natural tones */
+    --background: 30 20% 98%;
+    --foreground: 30 8% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 30 20% 98%;
+    --card-foreground: 30 8% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 30 20% 98%;
+    --popover-foreground: 30 8% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 30 25% 25%;
+    --primary-foreground: 30 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 30 15% 92%;
+    --secondary-foreground: 30 8% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 30 15% 92%;
+    --muted-foreground: 30 8% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 25 30% 88%;
+    --accent-foreground: 30 8% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 30 20% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 30 25% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Photography-specific design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(30 20% 98%), hsl(25 30% 95%));
+    --gradient-overlay: linear-gradient(to bottom, hsl(30 8% 15% / 0), hsl(30 8% 15% / 0.7));
+    --shadow-elegant: 0 10px 40px -10px hsl(30 8% 15% / 0.15);
+    --shadow-hover: 0 20px 60px -10px hsl(30 8% 15% / 0.25);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +65,40 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode for photography portfolio */
+    --background: 30 8% 8%;
+    --foreground: 30 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 30 8% 10%;
+    --card-foreground: 30 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 8% 10%;
+    --popover-foreground: 30 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 30 20% 85%;
+    --primary-foreground: 30 8% 15%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 30 8% 15%;
+    --secondary-foreground: 30 20% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 8% 15%;
+    --muted-foreground: 30 10% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 30 8% 18%;
+    --accent-foreground: 30 20% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 30 20% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 30 8% 18%;
+    --input: 30 8% 18%;
+    --ring: 30 20% 85%;
+
+    /* Dark mode design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(30 8% 8%), hsl(30 8% 12%));
+    --gradient-overlay: linear-gradient(to bottom, hsl(30 8% 8% / 0), hsl(30 8% 8% / 0.9));
+    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.4);
+    --shadow-hover: 0 20px 60px -10px hsl(0 0% 0% / 0.6);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -102,4 +118,45 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Photography portfolio specific styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .overlay-gradient {
+    background: var(--gradient-overlay);
+  }
+
+  .elegant-shadow {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .hover-shadow {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  .fast-transition {
+    transition: var(--transition-fast);
+  }
+
+  /* Image optimization for photography */
+  .portfolio-image {
+    @apply object-cover w-full h-full smooth-transition;
+  }
+
+  .portfolio-image:hover {
+    @apply scale-105;
+  }
+
+  /* Lightbox overlay */
+  .lightbox-overlay {
+    @apply fixed inset-0 bg-black/90 z-50 flex items-center justify-center;
+    backdrop-filter: blur(4px);
+  }
+}
 }
