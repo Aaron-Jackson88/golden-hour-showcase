@@ -37,19 +37,16 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`text-sm font-medium fast-transition ${
-                  isActive(item.path)
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-muted-foreground hover:text-primary"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+            <Link
+              to="/home"
+              className={`text-sm font-medium fast-transition ${
+                isActive("/home")
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-muted-foreground hover:text-primary"
+              }`}
+            >
+              Home
+            </Link>
             
             {/* Works Dropdown */}
             <div className="relative">
@@ -93,6 +90,20 @@ const Navigation = () => {
                 )}
               </AnimatePresence>
             </div>
+
+            {navItems.slice(1).map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-sm font-medium fast-transition ${
+                  isActive(item.path)
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -117,20 +128,17 @@ const Navigation = () => {
             className="md:hidden bg-background border-b border-border"
           >
             <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`block px-3 py-2 text-base font-medium fast-transition ${
-                    isActive(item.path)
-                      ? "text-primary bg-accent/50"
-                      : "text-muted-foreground hover:text-primary hover:bg-accent/30"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              <Link
+                to="/home"
+                className={`block px-3 py-2 text-base font-medium fast-transition ${
+                  isActive("/home")
+                    ? "text-primary bg-accent/50"
+                    : "text-muted-foreground hover:text-primary hover:bg-accent/30"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
               
               {/* Mobile Works Section */}
               <div>
@@ -173,6 +181,21 @@ const Navigation = () => {
                   )}
                 </AnimatePresence>
               </div>
+
+              {navItems.slice(1).map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`block px-3 py-2 text-base font-medium fast-transition ${
+                    isActive(item.path)
+                      ? "text-primary bg-accent/50"
+                      : "text-muted-foreground hover:text-primary hover:bg-accent/30"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </motion.div>
         )}
