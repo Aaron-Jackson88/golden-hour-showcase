@@ -93,6 +93,62 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Works Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-light text-primary mb-4">
+              Works
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Browse through my photography categories
+            </p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <div className="flex gap-6 pb-4 min-w-max">
+              {galleryCategories.map((category, index) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex-shrink-0 w-80"
+                >
+                  <Link
+                    to={category.path}
+                    className="block bg-card rounded-lg overflow-hidden elegant-shadow smooth-transition hover:shadow-hover"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={category.image}
+                        alt={`${category.title} photography`}
+                        className="portfolio-image"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-medium text-primary mb-2">
+                        {category.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {category.description}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery Categories */}
       <section id="explore-work" className="py-20 px-6 bg-accent/30">
         <div className="max-w-7xl mx-auto">
