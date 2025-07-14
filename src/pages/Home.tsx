@@ -59,11 +59,14 @@ const Home = () => {
           <p className="text-xl md:text-2xl font-light mb-8 opacity-90">
             Professional photography that captures the essence of who you are
           </p>
-          <Button asChild size="lg" variant="secondary" className="smooth-transition hover-shadow">
-            <Link to="/gallery/portraits">
-              Explore My Work
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <Button 
+            onClick={() => document.getElementById('explore-work')?.scrollIntoView({ behavior: 'smooth' })}
+            size="lg" 
+            variant="secondary" 
+            className="smooth-transition hover-shadow"
+          >
+            Explore My Work
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </motion.div>
       </section>
@@ -91,7 +94,7 @@ const Home = () => {
       </section>
 
       {/* Gallery Categories */}
-      <section className="py-20 px-6 bg-accent/30">
+      <section id="explore-work" className="py-20 px-6 bg-accent/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
