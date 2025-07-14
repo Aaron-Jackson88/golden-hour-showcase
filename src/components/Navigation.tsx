@@ -1,25 +1,30 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isWorksOpen, setIsWorksOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
     { name: "Home", path: "/home" },
-    { name: "Portraits", path: "/gallery/portraits" },
-    { name: "Events", path: "/gallery/events" },
-    { name: "Editorial", path: "/gallery/editorial" },
-    { name: "Graduations", path: "/gallery/graduations" },
     { name: "About", path: "/about" },
     { name: "Pricing", path: "/pricing" },
     { name: "Contact", path: "/contact" },
   ];
 
+  const worksItems = [
+    { name: "Portraits", path: "/gallery/portraits" },
+    { name: "Events", path: "/gallery/events" },
+    { name: "Editorial", path: "/gallery/editorial" },
+    { name: "Graduations", path: "/gallery/graduations" },
+  ];
+
   const isActive = (path: string) => location.pathname === path;
+  const isWorksActive = worksItems.some(item => isActive(item.path));
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
@@ -31,7 +36,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -45,6 +50,49 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Works Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setIsWorksOpen(!isWorksOpen)}
+                className={`flex items-center space-x-1 text-sm font-medium fast-transition ${
+                  isWorksActive
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
+              >
+                <span>Works</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${isWorksOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              <AnimatePresence>
+                {isWorksOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-lg z-50"
+                  >
+                    <div className="py-2">
+                      {worksItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.path}
+                          onClick={() => setIsWorksOpen(false)}
+                          className={`block px-4 py-2 text-sm fast-transition ${
+                            isActive(item.path)
+                              ? "text-primary bg-accent/50"
+                              : "text-muted-foreground hover:text-primary hover:bg-accent/30"
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -83,6 +131,48 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Works Section */}
+              <div>
+                <button
+                  onClick={() => setIsWorksOpen(!isWorksOpen)}
+                  className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-accent/30 fast-transition"
+                >
+                  <span>Works</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isWorksOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {isWorksOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-6 space-y-1">
+                        {worksItems.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.path}
+                            className={`block px-3 py-2 text-sm font-medium fast-transition ${
+                              isActive(item.path)
+                                ? "text-primary bg-accent/50"
+                                : "text-muted-foreground hover:text-primary hover:bg-accent/30"
+                            }`}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setIsWorksOpen(false);
+                            }}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
         )}
