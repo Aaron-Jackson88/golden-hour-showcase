@@ -5,16 +5,17 @@ import Navigation from "@/components/Navigation";
 import Lightbox from "@/components/Lightbox";
 
 // Import all images explicitly
-import portrait1 from "@/assets/Photos/portraits/Vondervic soft book-1.jpg";
-import portrait2 from "@/assets/Photos/portraits/Vondervic soft book-3.jpg";
-import portrait3 from "@/assets/Photos/portraits/Vondervic soft-1.jpg";
-import portrait4 from "@/assets/Photos/portraits/Vondervic soft-10.jpg";
-import portrait5 from "@/assets/Photos/portraits/Vondervic soft-12.jpg";
-import portrait6 from "@/assets/Photos/portraits/Vondervic soft-3.jpg";
-import portrait7 from "@/assets/Photos/portraits/Vondervic soft-4.jpg";
-import portrait8 from "@/assets/Photos/portraits/Vondervic soft-5.jpg";
-import portrait9 from "@/assets/Photos/portraits/Vondervic soft-7.jpg";
-import portrait10 from "@/assets/Photos/portraits/Vondervic soft-8.jpg";
+import portrait1 from "@/assets/Photos/portraits/Vondervic-soft-book-1.jpg";
+import portrait2 from "@/assets/Photos/portraits/Vondervic-soft-book-3.jpg";
+import portrait3 from "@/assets/Photos/portraits/Vondervic-soft-1.jpg";
+import portrait4 from "@/assets/Photos/portraits/Vondervic-soft-10.jpg";
+import portrait5 from "@/assets/Photos/portraits/Vondervic-soft-12.jpg";
+import portrait6 from "@/assets/Photos/portraits/Vondervic-soft-3.jpg";
+import portrait7 from "@/assets/Photos/portraits/Vondervic-soft-4.jpg";
+import portrait8 from "@/assets/Photos/portraits/Vondervic-soft-5.jpg";
+import portrait9 from "@/assets/Photos/portraits/Vondervic-soft-7.jpg";
+import portrait10 from "@/assets/Photos/portraits/Vondervic-soft-8.jpg";
+
 
 import event1 from "@/assets/Photos/events/Park Hiyatt Event-125.jpg";
 import event2 from "@/assets/Photos/events/Park Hiyatt Event-155.jpg";
